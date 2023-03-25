@@ -5,6 +5,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import uk.co.tmdavies.shadow.customitems.ShadowItemAbility;
 import uk.co.tmdavies.shadow.utils.ItemUtils;
+import uk.co.tmdavies.shadow.utils.ShadowUtils;
 
 public class EmpowerAbility implements ShadowItemAbility {
 
@@ -44,6 +45,7 @@ public class EmpowerAbility implements ShadowItemAbility {
     public void runAbility(Player player) {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, this.abilityLevel * 10, this.abilityLevel));
+        player.sendMessage(ShadowUtils.Colour("&d" + getName() + " &8» &7Your body has been empowered."));
 
     }
 

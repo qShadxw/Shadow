@@ -7,8 +7,9 @@ public final class Shadow extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Loads Commands
-        ShadowUtils.loadCommands();
+        // Loads Files
+        ShadowUtils.loadFiles("uk.co.tmdavies.commands.playercommands");
+        ShadowUtils.loadFiles("uk.co.tmdavies.listeners");
 
     }
 

@@ -20,9 +20,9 @@ public class ShadowUtils {
     }
 
     @ToBeChanged
-    public static void loadCommands() {
+    public static void loadFiles(String packagePath) {
 
-        Reflections reflections = new Reflections("uk.co.tmdavies.commands.playercommands");
+        Reflections reflections = new Reflections(packagePath);
         Set<Class<? extends CommandExecutor>> allClasses =
                 reflections.getSubTypesOf(CommandExecutor.class);
 

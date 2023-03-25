@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.tmdavies.shadow.Shadow;
 import uk.co.tmdavies.shadow.builders.RPGItemBuilder;
 import uk.co.tmdavies.shadow.customitems.abilities.EmpowerAbility;
+import uk.co.tmdavies.shadow.utils.ItemUtils;
 import uk.co.tmdavies.shadow.utils.ShadowUtils;
 
 public enum ShadowItem {
@@ -23,7 +24,7 @@ public enum ShadowItem {
     private final String name;
     private final String[] lore;
     private final Material material;
-    private final NamespacedKey key;
+    private final String key;
     private final ShadowItemAbility ability;
     private final ItemFlag[] flags;
 
@@ -31,7 +32,7 @@ public enum ShadowItem {
         this.name = ShadowUtils.Colour(name);
         this.lore = lore;
         this.material = material;
-        this.key = new NamespacedKey(JavaPlugin.getPlugin(Shadow.class), key);
+        this.key = key;
         this.ability = ability;
         this.flags = flags;
     }
@@ -48,7 +49,7 @@ public enum ShadowItem {
         return this.material;
     }
 
-    public NamespacedKey getKey() {
+    public String getKey() {
         return this.key;
     }
 
@@ -66,7 +67,7 @@ public enum ShadowItem {
                 .setName(this.name)
                 .setLore(this.lore)
                 .setUnbreakable()
-                .addKey(this.key, PersistentDataType.STRING, this.key.getKey())
+                .addKey(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING, this.key)
                 .addFlags(this.flags)
                 .build();
 
@@ -78,7 +79,7 @@ public enum ShadowItem {
                 .setName(this.name)
                 .setLore(this.lore)
                 .setUnbreakable()
-                .addKey(key, PersistentDataType.STRING, key.getKey())
+                .addKey(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING, this.key)
                 .addFlags(this.flags)
                 .build();
 
@@ -87,7 +88,7 @@ public enum ShadowItem {
     public static ShadowItem getByKey(String key) {
 
         for (ShadowItem item : ShadowItem.values())
-            if (item.getKey().getKey().equals(key)) return item;
+            if (item.getKey().equals(key)) return item;
 
         return null;
 
