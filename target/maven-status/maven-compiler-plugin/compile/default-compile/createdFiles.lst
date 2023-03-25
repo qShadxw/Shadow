@@ -1,0 +1,7 @@
+uk\co\tmdavies\shadow\utils\ShadowUtils.class
+uk\co\tmdavies\shadow\commands\ShadowCommand.class
+uk\co\tmdavies\shadow\builders\RPGItemBuilder.class
+uk\co\tmdavies\shadow\commands\playercommands\ItemCommand.class
+uk\co\tmdavies\shadow\commands\CustomCommand.class
+uk\co\tmdavies\shadow\enums\ShadowWeapon.class
+uk\co\tmdavies\shadow\Shadow.class

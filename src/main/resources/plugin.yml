@@ -1,0 +1,10 @@
+name: Shadow
+version: '${project.version}'
+main: uk.co.tmdavies.shadow.Shadow
+api-version: 1.19
+commands:
+  item:
+    description: Item Command
+permissions:
+  shadow.admin.item:
+    default: op
