@@ -17,9 +17,9 @@ import uk.co.tmdavies.shadow.utils.ItemUtils;
 
 public class AbilityListener implements Listener {
 
-    public AbilityListener() {
+    public AbilityListener(Shadow plugin) {
 
-        Bukkit.getPluginManager().registerEvents(this, JavaPlugin.getPlugin(Shadow.class));
+        Bukkit.getPluginManager().registerEvents(this, plugin);
 
     }
 

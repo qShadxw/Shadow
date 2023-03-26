@@ -44,7 +44,8 @@ public class EmpowerAbility implements ShadowItemAbility {
     @Override
     public void runAbility(Player player) {
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, this.abilityLevel * 10, this.abilityLevel));
+        // Duration = abilityLevel * 10 second (in ticks, 30 ticks = 1 second)
+        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, (this.abilityLevel * 10) * 30, this.abilityLevel));
         player.sendMessage(ShadowUtils.Colour("&d" + getName() + " &8» &7Your body has been empowered."));
 
     }
