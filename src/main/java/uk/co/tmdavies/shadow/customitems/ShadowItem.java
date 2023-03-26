@@ -9,17 +9,28 @@ import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.tmdavies.shadow.Shadow;
 import uk.co.tmdavies.shadow.builders.RPGItemBuilder;
 import uk.co.tmdavies.shadow.customitems.abilities.EmpowerAbility;
+import uk.co.tmdavies.shadow.customitems.abilities.HolyAbility;
 import uk.co.tmdavies.shadow.utils.ItemUtils;
 import uk.co.tmdavies.shadow.utils.ShadowUtils;
 
 public enum ShadowItem {
 
+    // Weapons
     EXCALIBUR("&eExcalibur", new String[]{
             " ",
             "&7The holy sword &eExcalibur&7.",
-            "&7Once said the mighty &fKing Arthur &7once",
+            "&7Once said the mighty &fKing Arthur",
             "&7held this majestic sword."
-    }, Material.GOLDEN_SWORD, "shadow_weapon_excalibur", new EmpowerAbility(2), getDefaultFlags());
+    }, Material.GOLDEN_SWORD, "shadow_weapon_excalibur", new EmpowerAbility(3), getDefaultFlags()),
+
+    // Armour
+    HOLY_CROWN("&eHoly Crown", new String[]{
+            " ",
+            "&7A sacred crown that imbues",
+            "&7the wearer with &eHoly Power&8.",
+            "&7Tale hopes the wearer is good-hearted."
+    }, Material.GOLDEN_HELMET, "shadow_armour_holy-crown", new HolyAbility(), getDefaultFlags()),
+    ;
 
     private final String name;
     private final String[] lore;
@@ -68,6 +79,7 @@ public enum ShadowItem {
                 .setLore(this.lore)
                 .setUnbreakable()
                 .addKey(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING, this.key)
+                .addAbility(this.ability)
                 .addFlags(this.flags)
                 .build();
 
@@ -80,6 +92,7 @@ public enum ShadowItem {
                 .setLore(this.lore)
                 .setUnbreakable()
                 .addKey(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING, this.key)
+                .addAbility(this.ability)
                 .addFlags(this.flags)
                 .build();
 

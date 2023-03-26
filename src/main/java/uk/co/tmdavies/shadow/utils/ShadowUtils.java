@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import uk.co.tmdavies.shadow.Shadow;
 import uk.co.tmdavies.shadow.commands.playercommands.ItemCommand;
+import uk.co.tmdavies.shadow.commands.playercommands.MainCommand;
 import uk.co.tmdavies.shadow.enums.DefaultFontInfo;
 import uk.co.tmdavies.shadow.listeners.AbilityListener;
 
@@ -28,11 +29,20 @@ public class ShadowUtils {
     public static void loadFiles(Shadow plugin) {
 
         // Commands
+        new MainCommand();
         new ItemCommand();
 
         // Listeners
         new AbilityListener(plugin);
 
+    }
+
+    public static String toRomanNumeral(int number) {
+        String[] thousands = {"", "M", "MM", "MMM"};
+        String[] hundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+        String[] tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        String[] units = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        return thousands[number / 1000] + hundreds[(number % 1000) / 100] + tens[(number % 100) / 10] + units[number % 10];
     }
 
     public static String getCenteredMessage(@NotNull String message) {
@@ -65,7 +75,7 @@ public class ShadowUtils {
             compensated += spaceLength;
         }
 
-        return builder.toString();
+        return builder.toString() + message;
     }
 
     public static void sendCenteredMessage(@NotNull Player player, @NotNull String message) {

@@ -9,6 +9,7 @@ public class CooldownUtils {
 
         for (ShadowItem item : ShadowItem.values()) {
 
+            if (item.getAbility() == null) continue;
             if (CooldownAPI.cooldownExists(item.getAbility().getName())) continue;
 
             CooldownAPI.createCooldown(item.getAbility().getName(), item.getAbility().getCooldown());

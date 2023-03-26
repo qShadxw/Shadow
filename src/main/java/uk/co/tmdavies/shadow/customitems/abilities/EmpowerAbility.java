@@ -29,9 +29,9 @@ public class EmpowerAbility implements ShadowItemAbility {
     @Override
     public String[] getLore() {
         return ItemUtils.generateAbilityLore(this,
-                "&7Empower yourself with your might,",
-                "&7gain strength equal to the power of",
-                "&7this weapon."
+                "&8&oEmpower yourself with your might,",
+                "&8&ogain strength equal to the power",
+                "&8&oof this weapon."
         );
     }
 
@@ -42,7 +42,6 @@ public class EmpowerAbility implements ShadowItemAbility {
 
     @Override
     public void runAbility(Player player) {
-
         if (CooldownAPI.isOnCooldown(getName(), player)) {
             player.sendMessage(
                     ShadowUtils.Colour("&d" + getName() + " &8» &cAbility still on cooldown. ("
@@ -53,11 +52,20 @@ public class EmpowerAbility implements ShadowItemAbility {
         }
 
         // Duration = abilityLevel * 10 second (in ticks, 30 ticks = 1 second)
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, (this.abilityLevel * 10) * 30, this.abilityLevel));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, (10   * 30), this.abilityLevel-1));
         player.sendMessage(ShadowUtils.Colour("&d" + getName() + " &8» &7Your body has been empowered."));
 
         CooldownAPI.addCooldown(getName(), player, getCooldown());
+    }
 
+    @Override
+    public void runArmourAbility(Player player) {
+
+    }
+
+    @Override
+    public void stopAbility(Player player) {
+        player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
     }
 
 }

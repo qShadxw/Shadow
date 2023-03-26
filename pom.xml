@@ -6,13 +6,13 @@
 
     <groupId>uk.co.tmdavies</groupId>
     <artifactId>Shadow</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.0-DEV</version>
     <packaging>jar</packaging>
 
     <name>Shadow</name>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>19</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -73,8 +73,15 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>23.0.0</version>
+            <version>24.0.1</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.co.tmdavies</groupId>
+            <artifactId>ArmorEquipEvent</artifactId>
+            <version>1.8.1-release</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/lib/ArmorEquipEvent-1.8.2-SNAPSHOT.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

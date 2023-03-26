@@ -14,4 +14,8 @@ public interface ShadowItemAbility {
 
     void runAbility(Player player);
 
+    void runArmourAbility(Player player);
+
+    void stopAbility(Player player);
+
 }

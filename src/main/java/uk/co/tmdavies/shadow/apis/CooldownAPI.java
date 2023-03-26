@@ -48,19 +48,19 @@ public class CooldownAPI {
     }
 
     public static int getCooldownForPlayerInt(String key, Player player, long now) {
-        return (int) ((Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())).intValue() - now) / 1000);
+        return (int) ((now - (Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())).intValue())) / 1000);
     }
 
     public static int getCooldownForPlayerInt(String key, Player player) {
-        return ((Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())).intValue()));
+        return Math.abs((int) ((System.currentTimeMillis() - (Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())).intValue()))))/1000;
     }
 
     public static long getCooldownForPlayerLong(String key, Player player) {
-        return ((Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())) - System.currentTimeMillis()) / 1000);
+        return (System.currentTimeMillis() - (Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())))) / 1000;
     }
 
     public static long getCooldownForPlayerLong(String key, Player player, long now) {
-        return ((Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())) - now) / 1000);
+        return (now - (Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())))) / 1000;
     }
 
     public static void removeCooldown(String key, Player player) {
