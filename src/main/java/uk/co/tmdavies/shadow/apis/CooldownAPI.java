@@ -52,7 +52,7 @@ public class CooldownAPI {
     }
 
     public static int getCooldownForPlayerInt(String key, Player player) {
-        return (int) ((Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())).intValue() - System.currentTimeMillis()) / 1000);
+        return ((Objects.requireNonNull(cooldown.get(key).getIfPresent(player.getUniqueId())).intValue()));
     }
 
     public static long getCooldownForPlayerLong(String key, Player player) {
