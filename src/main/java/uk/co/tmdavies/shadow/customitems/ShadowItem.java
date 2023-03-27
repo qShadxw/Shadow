@@ -21,15 +21,14 @@ public enum ShadowItem {
             "&7The holy sword &eExcalibur&7.",
             "&7Once said the mighty &fKing Arthur",
             "&7held this majestic sword."
-    }, Material.GOLDEN_SWORD, "shadow_weapon_excalibur", new EmpowerAbility(3), getDefaultFlags()),
-
+    }, Material.GOLDEN_SWORD, "shadow_weapon_excalibur", new EmpowerAbility(3), 10001, getDefaultFlags()),
     // Armour
     HOLY_CROWN("&eHoly Crown", new String[]{
             " ",
             "&7A sacred crown that imbues",
             "&7the wearer with &eHoly Power&8.",
             "&7Tale hopes the wearer is good-hearted."
-    }, Material.GOLDEN_HELMET, "shadow_armour_holy-crown", new HolyAbility(), getDefaultFlags()),
+    }, Material.GOLDEN_HELMET, "shadow_armour_holy-crown", new HolyAbility(), 10002, getDefaultFlags()),
     ;
 
     private final String name;
@@ -37,14 +36,16 @@ public enum ShadowItem {
     private final Material material;
     private final String key;
     private final ShadowItemAbility ability;
+    private final int customData;
     private final ItemFlag[] flags;
 
-    ShadowItem(String name, String[] lore, Material material, String key, ShadowItemAbility ability, ItemFlag... flags) {
+    ShadowItem(String name, String[] lore, Material material, String key, ShadowItemAbility ability, int customData, ItemFlag... flags) {
         this.name = ShadowUtils.Colour(name);
         this.lore = lore;
         this.material = material;
         this.key = key;
         this.ability = ability;
+        this.customData = customData;
         this.flags = flags;
     }
 
@@ -68,6 +69,10 @@ public enum ShadowItem {
         return this.ability;
     }
 
+    public int getCustomData() {
+        return this.customData;
+    }
+
     public ItemFlag[] getFlags() {
         return this.flags;
     }
@@ -80,6 +85,7 @@ public enum ShadowItem {
                 .setUnbreakable()
                 .addKey(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING, this.key)
                 .addAbility(this.ability)
+                .addCustomData(this.customData)
                 .addFlags(this.flags)
                 .build();
 
@@ -93,18 +99,17 @@ public enum ShadowItem {
                 .setUnbreakable()
                 .addKey(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING, this.key)
                 .addAbility(this.ability)
+                .addCustomData(this.customData)
                 .addFlags(this.flags)
                 .build();
 
     }
 
     public static ShadowItem getByKey(String key) {
-
         for (ShadowItem item : ShadowItem.values())
             if (item.getKey().equals(key)) return item;
 
         return null;
-
     }
 
     private static ItemFlag[] getDefaultFlags() {

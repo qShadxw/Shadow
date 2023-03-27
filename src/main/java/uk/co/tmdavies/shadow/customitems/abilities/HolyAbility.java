@@ -1,10 +1,13 @@
 package uk.co.tmdavies.shadow.customitems.abilities;
 
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import uk.co.tmdavies.shadow.customitems.ShadowItemAbility;
 import uk.co.tmdavies.shadow.utils.ItemUtils;
+
+import java.util.Objects;
 
 public class HolyAbility implements ShadowItemAbility {
 
@@ -38,11 +41,11 @@ public class HolyAbility implements ShadowItemAbility {
 
     @Override
     public void runArmourAbility(Player player) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, PotionEffect.INFINITE_DURATION, 1));
+        Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(30);
     }
 
     @Override
     public void stopAbility(Player player) {
-        player.removePotionEffect(PotionEffectType.NIGHT_VISION);
+        Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(20);
     }
 }

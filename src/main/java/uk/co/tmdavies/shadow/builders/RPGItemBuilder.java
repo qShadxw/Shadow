@@ -77,17 +77,19 @@ public class RPGItemBuilder {
         return this;
     }
 
+    public RPGItemBuilder addCustomData(int data) {
+        this.itemMeta.setCustomModelData(data);
+        return this;
+    }
+
     public ItemStack build() {
         if (this.ability != null) {
-
             List<String> lore = this.itemMeta.getLore() != null ? this.itemMeta.getLore() : new ArrayList<>();
             lore.addAll(List.of(this.ability.getLore()));
             this.itemMeta.setLore(lore);
-
         }
 
         this.itemStack.setItemMeta(this.itemMeta);
-
         return this.itemStack;
     }
 
