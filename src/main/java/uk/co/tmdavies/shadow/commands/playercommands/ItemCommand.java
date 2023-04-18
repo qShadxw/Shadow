@@ -9,7 +9,6 @@ import uk.co.tmdavies.shadow.utils.ShadowUtils;
 public class ItemCommand extends ShadowCommand {
     public ItemCommand() {
         super("item", (customCommand) -> {
-
             CommandSender sender = customCommand.getSender();
             String[] args = customCommand.getArgs();
 
@@ -40,8 +39,6 @@ public class ItemCommand extends ShadowCommand {
 
             player.getInventory().addItem(shadowWeapon.getBuiltItem());
             player.sendMessage(ShadowUtils.Chat("&aGave " + player.getName() + " item &e" + shadowWeapon.name() + "&7."));
-
         });
     }
-
 }
