@@ -8,11 +8,11 @@ import uk.co.tmdavies.shadow.utils.ShadowUtils;
 public class MainCommand extends ShadowCommand {
     public MainCommand() {
         super("shadow", (customCommand) -> {
-
             CommandSender sender = customCommand.getSender();
 
             if (!sender.hasPermission("shadow.admin")) {
                 sender.sendMessage(ShadowUtils.Chat("&cYou do not have permission to execute this command."));
+                
                 return;
             }
 
@@ -30,7 +30,6 @@ public class MainCommand extends ShadowCommand {
             ShadowUtils.sendCenteredMessage(player, "&7Current Version: " + ShadowUtils.colorRainbow("0.1.0-DEV Alpha") + "&7.");
             ShadowUtils.sendCenteredMessage(player, "&7Only for personal and friend use. By Carbonate/Tyler.");
             ShadowUtils.sendCenteredMessage(player, "&7&ohttps://github.com/qShadxw");
-
         });
     }
 }
