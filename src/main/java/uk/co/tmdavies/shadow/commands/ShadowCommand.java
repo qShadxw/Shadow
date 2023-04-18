@@ -9,13 +9,11 @@ import java.util.function.Consumer;
 public abstract class ShadowCommand {
 
     public ShadowCommand(String commandName, Consumer<CustomCommand> commandExecute) {
-
         Objects.requireNonNull(JavaPlugin.getPlugin(Shadow.class).getCommand(commandName))
                 .setExecutor((sender, command, string, args) -> {
                     commandExecute.accept(new CustomCommand(sender, command, string, args));
                     return true;
                 });
-
     }
 
 }
