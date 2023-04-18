@@ -18,15 +18,16 @@ public class ItemUtils {
     }
 
     public static String[] generateAbilityLore(ShadowItemAbility ability, String... description) {
-
         List<String> lore = new ArrayList<>();
 
         lore.add(" ");
         lore.add(ShadowUtils.Colour("&7Ability: &d" + ability.getName() + " " + ShadowUtils.toRomanNumeral(ability.getLevel())));
-        for (String string : description) lore.add(ShadowUtils.Colour(string));
+        
+        for (String string : description) {
+            lore.add(ShadowUtils.Colour(string));   
+        }
 
         return lore.toArray(new String[0]);
-
     }
 
     public static boolean isWearable(ItemStack itemStack) {
@@ -36,7 +37,8 @@ public class ItemUtils {
                 || name.endsWith("_CHESTPLATE")
                 || name.endsWith("_LEGGINGS")
                 || name.endsWith("_BOOTS")
-                || name.endsWith("ELYTRA");
+                || name.endsWith("ELYTRA")
+                || name.endsWith("SKULL");
     }
 
 }
