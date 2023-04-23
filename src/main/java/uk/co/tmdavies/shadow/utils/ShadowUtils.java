@@ -5,10 +5,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import uk.co.tmdavies.shadow.Shadow;
+import uk.co.tmdavies.shadow.commands.playercommands.DumpCommand;
 import uk.co.tmdavies.shadow.commands.playercommands.ItemCommand;
 import uk.co.tmdavies.shadow.commands.playercommands.MainCommand;
 import uk.co.tmdavies.shadow.enums.DefaultFontInfo;
 import uk.co.tmdavies.shadow.listeners.AbilityListener;
+import uk.co.tmdavies.shadow.listeners.ServerListener;
 
 import java.awt.*;
 import java.util.regex.Matcher;
@@ -27,14 +29,14 @@ public class ShadowUtils {
     }
 
     public static void loadFiles(Shadow plugin) {
-
         // Commands
         new MainCommand();
         new ItemCommand();
+        new DumpCommand();
 
         // Listeners
         new AbilityListener(plugin);
-
+        new ServerListener(plugin);
     }
 
     public static String toRomanNumeral(int number) {

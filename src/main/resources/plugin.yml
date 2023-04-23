@@ -7,6 +7,8 @@ commands:
     description: Main Command
   item:
     description: Item Command
+  dump:
+    description: Dump Command
 permissions:
   shadow.admin:
     default: op
