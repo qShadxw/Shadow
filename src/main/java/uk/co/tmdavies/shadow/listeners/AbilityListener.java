@@ -19,9 +19,7 @@ import uk.co.tmdavies.shadow.utils.ItemUtils;
 public class AbilityListener implements Listener {
 
     public AbilityListener(Shadow plugin) {
-
         Bukkit.getPluginManager().registerEvents(this, plugin);
-
     }
 
     @EventHandler
@@ -29,21 +27,31 @@ public class AbilityListener implements Listener {
         Player player = event.getPlayer();
 
         if (event.getAction().equals(Action.LEFT_CLICK_AIR)
-            || event.getAction().equals(Action.LEFT_CLICK_BLOCK)) return;
+            || event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
+            return;   
+        }
 
         if (player.getInventory().getItemInMainHand() == null
-            || player.getInventory().getItemInMainHand().getType() == Material.AIR) return;
+            || player.getInventory().getItemInMainHand().getType() == Material.AIR) {
+            return;
+        }
 
         ItemStack itemStack = player.getInventory().getItemInMainHand();
         ItemMeta itemMeta = itemStack.getItemMeta();
         PersistentDataContainer container = itemMeta.getPersistentDataContainer();
 
-        if (!container.has(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING)) return;
+        if (!container.has(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING)) {
+            return;
+        }
 
         ShadowItem shadowItem = ShadowItem.getByKey(container.get(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING));
 
-        if (shadowItem == null) return;
-        if (shadowItem.getAbility() == null) return;
+        if (shadowItem == null) {
+            return;
+        }
+        if (shadowItem.getAbility() == null) {
+            return;
+        }
 
         shadowItem.getAbility().runAbility(player);
     }
@@ -59,7 +67,9 @@ public class AbilityListener implements Listener {
             ItemMeta itemMeta = itemStack.getItemMeta();
             PersistentDataContainer container = itemMeta.getPersistentDataContainer();
 
-            if (!container.has(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING)) return;
+            if (!container.has(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING)) {
+                return;
+            }
 
             ShadowItem shadowItem = ShadowItem.getByKey(container.get(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING));
 
@@ -75,7 +85,9 @@ public class AbilityListener implements Listener {
             ItemMeta itemMeta = itemStack.getItemMeta();
             PersistentDataContainer container = itemMeta.getPersistentDataContainer();
 
-            if (!container.has(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING)) return;
+            if (!container.has(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING)) {
+                return;
+            }
 
             ShadowItem shadowItem = ShadowItem.getByKey(container.get(ItemUtils.getDefaultItemKey(), PersistentDataType.STRING));
 

@@ -78,7 +78,6 @@ public enum ShadowItem {
     }
 
     public ItemStack getBuiltItem() {
-
         return new RPGItemBuilder(this.material)
                 .setName(this.name)
                 .setLore(this.lore)
@@ -88,11 +87,9 @@ public enum ShadowItem {
                 .addCustomData(this.customData)
                 .addFlags(this.flags)
                 .build();
-
     }
 
     public ItemStack getBuiltItemWithCustomKey(NamespacedKey key) {
-
         return new RPGItemBuilder(this.material)
                 .setName(this.name)
                 .setLore(this.lore)
@@ -102,12 +99,14 @@ public enum ShadowItem {
                 .addCustomData(this.customData)
                 .addFlags(this.flags)
                 .build();
-
     }
 
     public static ShadowItem getByKey(String key) {
-        for (ShadowItem item : ShadowItem.values())
-            if (item.getKey().equals(key)) return item;
+        for (ShadowItem item : ShadowItem.values()) {
+            if (item.getKey().equals(key)) {
+                return item;
+            }
+        }
 
         return null;
     }
