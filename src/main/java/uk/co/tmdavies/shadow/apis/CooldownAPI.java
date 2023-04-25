@@ -33,7 +33,9 @@ public class CooldownAPI {
     }
 
     public static void addCooldown(String key, Player player, int seconds) {
-        if (!cooldown.containsKey(key)) throw new IllegalArgumentException(key + " does not exist");
+        if (!cooldown.containsKey(key)) {
+            throw new IllegalArgumentException(key + " does not exist");
+        }
 
         long next = System.currentTimeMillis() + seconds * 1000L;
         cooldown.get(key).put(player.getUniqueId(), next);
@@ -64,12 +66,18 @@ public class CooldownAPI {
     }
 
     public static void removeCooldown(String key, Player player) {
-        if (!cooldown.containsKey(key)) throw new IllegalArgumentException(key + " does not exist");
+        if (!cooldown.containsKey(key)) {
+            throw new IllegalArgumentException(key + " does not exist");
+        }
+
         cooldown.get(key).invalidate(player.getUniqueId());
     }
 
     public static void removeCooldown(String key) {
-        if (!cooldown.containsKey(key)) throw new IllegalArgumentException(key + " does not exist");
+        if (!cooldown.containsKey(key)) {
+            throw new IllegalArgumentException(key + " does not exist");
+        }
+
         cooldown.remove(key);
     }
 

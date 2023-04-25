@@ -8,6 +8,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.tmdavies.shadow.Shadow;
 import uk.co.tmdavies.shadow.builders.RPGItemBuilder;
+import uk.co.tmdavies.shadow.customitems.abilities.DoubleEdgeAbility;
 import uk.co.tmdavies.shadow.customitems.abilities.EmpowerAbility;
 import uk.co.tmdavies.shadow.customitems.abilities.HolyAbility;
 import uk.co.tmdavies.shadow.utils.ItemUtils;
@@ -22,6 +23,10 @@ public enum ShadowItem {
             "&7Once said the mighty &fKing Arthur",
             "&7held this majestic sword."
     }, Material.GOLDEN_SWORD, "shadow_weapon_excalibur", new EmpowerAbility(3), 10001, getDefaultFlags()),
+    TAINTED_CLAYMORE("&4Tainted Claymore", new String[]{
+            " ",
+            "&7&oPlaceholder"
+    }, Material.STONE_SWORD, "shadow_weapon_tainted-claymore", new DoubleEdgeAbility(1), 10002, getDefaultFlags()),
     // Armour
     HOLY_CROWN("&eHoly Crown", new String[]{
             " ",

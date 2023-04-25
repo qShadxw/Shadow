@@ -2,6 +2,7 @@ package uk.co.tmdavies.shadow.customitems.abilities;
 
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import uk.co.tmdavies.shadow.customitems.ShadowItemAbility;
@@ -35,7 +36,7 @@ public class HolyAbility implements ShadowItemAbility {
     }
 
     @Override
-    public void runAbility(Player player) {
+    public void runAbility(Player player, EntityEvent event) {
 
     }
 
