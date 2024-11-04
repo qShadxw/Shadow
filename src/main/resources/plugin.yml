@@ -1,0 +1,11 @@
+name: Shadow
+version: '0.1.0'
+main: uk.co.tmdavies.shadow.Shadow
+api-version: '1.21'
+authors: [Carbonate]
+commands:
+  shadow:
+    description: Main Command
+permissions:
+  shadow.use:
+    default: op
